@@ -16,7 +16,7 @@ from skimage import measure
 import matplotlib.cm as cm
 
 # AB 12/28/26 New Color Palet
-# Ordered: Blue, Red, Fuschia, Purple (Left to Right)
+# Ordered: Green, Red, Blue, Fuschia, Purple (Left to Right)
 USER_PALETTE = ['#009e73','#ff0000','#0000ff', '#ff00ff', '#CC79A7']
 
 def get_sorted_color_mapping(gmm_model):
