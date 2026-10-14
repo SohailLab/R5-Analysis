@@ -1,0 +1,36 @@
+{
+  "Bin_Width_ns": 0.0244,
+  "Laser_rep_rate_MHz": 80.0,
+  "Harmonic": 1.0,
+  "phi_cal": 0.0,
+  "m_cal": 1.0,
+  "Min_Intensity_Threshold": 0.2,
+  "Max_Intensity_Threshold": 1.0,
+  "TIFF_Filepaths_GMM": [
+    "/usr/local/data/set1.tiff",
+    "/usr/local/data/set2.tiff"
+  ],
+  "TIFF_Cal_Filepath": "usr/local/data/cal.tiff",
+  "TIFF_Filepath": "usr/local/data/ab42.tiff",
+  "G_centers": [0.2, 0.3, 0.4],
+  "S_centers": [0.2, 0.3, 0.4],
+  "USER_PALETTE": [ "#FF0000",
+                      "#0000FF",
+                      "#008000",
+                      "#800080",
+                      "#808000",
+                      "#008080",
+                      "#FF00FF",
+                      "#808080",
+                      "#000080",
+                      "#800000",
+                      "#00FF00",
+                      "#00FFFF",
+                      "#FFFF00",
+                      "#4A4A4A",
+                      "#000000",
+                      "#1E293B"
+  ]
+  ,
+  "Working_Dir": "usr/local/data"
+}
