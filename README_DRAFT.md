@@ -148,6 +148,7 @@ $$
 
 where $\hat{L}$ is the maximized likelihood, $N$ is the number of data points, and $k$ is the number of free parameters.
 * **Deviation from the Standard "Elbow" Method & Manual Selection:** In high-dimensional or multi-cluster clustering, standard practice often relies on plotting the BIC curve and visually identifying an "elbow" where marginal gains level off. However, because our biological FLIM datasets typically contain a very small number of distinct fluorescent lifetime species (e.g., $K = 2$ or $3$), a pronounced elbow is rarely present. Consequently, our workflow either minimizes the BIC penalty directly or uses a manual component input informed by experimental controls. In practice, most datasets are processed using manual component selection.
+
 ### D. Post-BIC Component Validation: Ellipse Overlap Check (`check_ellipse_overlap`)
 
 Relying solely on BIC minimization can still lead to over-splitting or redundant components, which is addressed in a subsequent validation step. After seeding initial cluster centers via $K$-means and fitting the GMM, the workflow calls `check_ellipse_overlap` to evaluate whether the $1\text{st}$ standard deviation ($1\sigma$) hyperellipses of any two Gaussian components overlap.
@@ -158,7 +159,7 @@ D^2 = (\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \
 $$
 
 $$
- \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}$ 
+ \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} 
 $$
  
 is a 2D coordinate vector in the $(G, S)$ phasor plane.
