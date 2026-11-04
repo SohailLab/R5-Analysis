@@ -198,8 +198,8 @@ Once the global GMM parameters ($\phi_k, \boldsymbol{\mu}_k, \boldsymbol{\Sigma}
 This pixel-wise refinement method uses spatial context to resolve ambiguous, low-confidence pixels:
 
 1. **Posterior Probability Calculation:** For each pixel $\mathbf{x}\_i$, the posterior probability $\gamma_{ik}$ of belonging to component $k$ is computed.
-2. **High-Confidence Assignment:** Pixels with an assignment probability $\gamma_{ik} \ge 0.60$ ($60%$ confidence) are directly assigned to their highest-likelihood component.
-3. **Neighborhood Voting for Low-Confidence Pixels:** For pixels with a maximum confidence below $60%$ ($\gamma_{ik} < 0.60$), the algorithm inspects the $8$ nearest spatial neighbors within a $3 \times 3$ window. The ambiguous pixel is reassigned to the majority component among its confident neighbors using `scipy.stats.mode`.
+2. **High-Confidence Assignment:** Pixels with an assignment probability $\gamma_{ik} \ge 0.60$ ($60 \%$ confidence) are directly assigned to their highest-likelihood component.
+3. **Neighborhood Voting for Low-Confidence Pixels:** For pixels with a maximum confidence below $60 \%$ ($\gamma_{ik} < 0.60$), the algorithm inspects the $8$ nearest spatial neighbors within a $3 \times 3$ window. The ambiguous pixel is reassigned to the majority component among its confident neighbors using `scipy.stats.mode`.
 
 
 
