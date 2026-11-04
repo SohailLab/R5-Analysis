@@ -157,11 +157,22 @@ $$
 D^2 = (\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu})
 $$
 
-* $\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}$ is a 2D coordinate vector in the $(G, S)$ phasor plane.
+$$
+ \mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}$ 
+ $$
+is a 2D coordinate vector in the $(G, S)$ phasor plane.
 
-* $\boldsymbol{\mu} = \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix}$ is the component mean vector.
+ $$
+ \boldsymbol{\mu} = \begin{bmatrix} \mu_1 \\ \mu_2 \end{bmatrix}
+ $$
 
-* $\boldsymbol{\Sigma}$ is the $2 \times 2$ covariance matrix (with determinant $\vert{}\boldsymbol{\Sigma}\vert{}$).
+is the component mean vector.
+
+$$
+\boldsymbol{\Sigma}
+$$
+
+is the $2 \times 2$ covariance matrix (with determinant $\vert{}\boldsymbol{\Sigma}\vert{}$).
 **Algorithm Workflow:**
 1. **Input Parameters:** Pass the fitted Gaussian components ($\boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k$) and the number of boundary points $n$ to sample for comparison.
 2. **Generate Pairwise Combinations:** Construct a list of all unique component pairs to compare (e.g., $C_1 \text{ vs } C_2$, $C_1 \text{ vs } C_3$, $C_2 \text{ vs } C_3$, $\dots$).
