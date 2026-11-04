@@ -1,4 +1,4 @@
-# Quick Guide to Use & GUI Setup
+# Multi-Image Phasor Analysis for FLIM Data - A quick guide to setup and implementation
 
 > **[PLACEHOLDER — TODO: Once I get repository access]**
 > *`setup.bash` and `requirements.txt` will be added to the root directory to automate Conda environment creation and package installation.*
@@ -6,8 +6,8 @@
 ### Option A: Automated Conda Environment Setup (Recommended)
 1. Clone the repository and navigate to the project root directory:
 ```bash
-git clone <REPO_URL_PLACEHOLDER>
-cd <REPO_NAME_PLACEHOLDER>
+git clone https://github.com/SohailLab/R5-Analysis
+cd R5-Analysis
 ```
 2. Run the automated setup script to create a Conda environment and install all required dependencies:
 ```bash
@@ -17,7 +17,7 @@ bash setup.bash
 (Placeholder: `setup.bash` will initialize the Conda environment and install `requirements.txt` packages including `tkinter`, `sv_ttk`, `scikit-learn`, `scipy`, and `scikit-image`.)
 3. Activate the newly created Conda environment:
 ```bash
-conda activate <ENV_NAME_PLACEHOLDER>
+conda activate R5_analysis_env
 
 ```
 ### Option B: Manual Installation via `requirements.txt`
