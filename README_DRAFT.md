@@ -42,6 +42,7 @@ This stage converts raw time-domain photon counts into calibrated frequency-doma
 ### A. Spatial Binning, Normalization, and Thresholding
 Fluorescence decay is a Poissonian process in which the Signal-to-Noise Ratio (SNR) scales with the square root of the photon counts ($\sqrt{N_{ph}}$). By summing photon counts from adjacent pixels, spatial binning increases $N_{ph}$ and reduces the variance of the resulting phasor coordinates.
 1. **Spatial Integration:** The software applies $B \times B$ spatial binning to the raw intensity image (typically set to $3 \times 3$ in our workflow):
+
 $$
 I_{\text{binned}}(x,y,t) = \sum_{i=0}^{B-1} \sum_{j=0}^{B-1} I_{\text{raw}}(x+i, y+j, t)
 $$
@@ -53,6 +54,7 @@ For each pixel passing the intensity threshold, the normalized and binned time-d
 $$
 g(\omega) = \frac{\int_0^T I(t) \cos(\omega t) \, dt}{\int_0^T I(t) \, dt}, \quad s(\omega) = \frac{\int_0^T I(t) \sin(\omega t) \, dt}{\int_0^T I(t) \, dt}
 $$
+
 where $\omega = 2\pi f \cdot h$ ($f$ is the laser repetition rate and $h$ is the harmonic number).
 
 ### C. Calibration (Coordinate Rotation & Scaling)
