@@ -88,7 +88,7 @@ We use , **Coumarin 6 in EtOH** ($\tau \approx 2.5\text{ ns}$)  as a known mono-
 
 **Function:** `run_gmm_fitting_workflow`
 
-Rather than fitting models to individual images in isolation, this workflow employs a **Global Gaussian Mixture Model (GMM)** approach. Processed $(G, S)$ phasor coordinates above the $15\%$ intensity threshold from all input files are pooled into a single global dataset.
+Rather than fitting models to individual images in isolation, this workflow employs a **Global Gaussian Mixture Model (GMM)** approach. Processed $(G, S)$ phasor coordinates above the $15 \\%$ intensity threshold from all input files are pooled into a single global dataset.
 GMM is a probabilistic (soft) clustering method that assumes the data arises from a mixture of underlying Gaussian distributions. This approach is particularly effective for phasor clustering because the spatial noise distribution of phasor coordinates in the $G\text{–}S$ plane naturally follows a mixture of Gaussians.
 
 ### A. The Gaussian Mixture Model (GMM)
@@ -198,14 +198,14 @@ Once the global GMM parameters ($\phi_k, \boldsymbol{\mu}_k, \boldsymbol{\Sigma}
 This pixel-wise refinement method uses spatial context to resolve ambiguous, low-confidence pixels:
 
 1. **Posterior Probability Calculation:** For each pixel $\mathbf{x}\_i$, the posterior probability $\gamma_{ik}$ of belonging to component $k$ is computed.
-2. **High-Confidence Assignment:** Pixels with an assignment probability $\gamma_{ik} \ge 0.60$ ($60 \%$ confidence) are directly assigned to their highest-likelihood component.
-3. **Neighborhood Voting for Low-Confidence Pixels:** For pixels with a maximum confidence below $60 \%$ ($\gamma_{ik} < 0.60$), the algorithm inspects the $8$ nearest spatial neighbors within a $3 \times 3$ window. The ambiguous pixel is reassigned to the majority component among its confident neighbors using `scipy.stats.mode`.
+2. **High-Confidence Assignment:** Pixels with an assignment probability $\gamma_{ik} \ge 0.60$ ($60 \\%$ confidence) are directly assigned to their highest-likelihood component.
+3. **Neighborhood Voting for Low-Confidence Pixels:** For pixels with a maximum confidence below $60 \\%$ ($\gamma_{ik} < 0.60$), the algorithm inspects the $8$ nearest spatial neighbors within a $3 \times 3$ window. The ambiguous pixel is reassigned to the majority component among its confident neighbors using `scipy.stats.mode`.
 
 
 
 ### B. Aggregate-Based Classification ("Aggregate Assign" Overlay)
 This object-level method assumes that each contiguous biological aggregate exhibits a single distinct fluorescence lifetime and assigns the entire structure to its most probable GMM component:
-1. **Binary Masking & Connected Components:** A binary mask (using the $15\%$ maximum intensity threshold) is applied to the intensity image, and Connected Components Analysis (`skimage.measure.label`) is used to segment and label individual contiguous aggregates.
+1. **Binary Masking & Connected Components:** A binary mask (using the $15 \\%$ maximum intensity threshold) is applied to the intensity image, and Connected Components Analysis (`skimage.measure.label`) is used to segment and label individual contiguous aggregates.
 2. **Aggregate Log-Likelihood Summation:** For each labeled aggregate $A$, the total log-likelihood of its phasor cloud belonging to component $k$ is calculated by summing the log-likelihood of every constituent pixel $\mathbf{x}_m \in A$ using `scipy.stats.multivariate_normal.logpdf`:
 
 $$
