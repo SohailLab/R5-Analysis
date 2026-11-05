@@ -3,9 +3,11 @@
 > **[PLACEHOLDER — TODO: Once I get repository access]**
 > *`setup.bash` and `requirements.txt` will be added to the root directory to automate Conda environment creation and package installation.*
 
-### Description
+## Description
 
 To analyze FLIM data in phasor space without relying on representative images, we use multi-image image analysis.The provided code can take multiple three dimensional FLIM tiff files, calibrate them using a tiff image from a calibration standard,represent the FLIM data in phasor space, and then use a Gaussian Mixture Model (GMM) to find multiple components within the combined phasor data set. All of the analysis is controlled through a GUI (GUI2.py). After determining the cluster positions using GMM, the GUI can then be used to apply the model to the data, resulting in color-by-cluster images, phasor plots for each image with the clusters marked, and amalgamated phasor plots with data from all inputted images.
+
+## Getting Started
 
 ### Option A: Automated Conda Environment Setup (Recommended)
 1. Clone the repository and navigate to the project root directory:
@@ -31,7 +33,7 @@ conda activate R5_analysis_env
 2. Install the required packages from `requirements.txt`:
 * **macOS/Linux:** `python3 -m pip install -r requirements.txt`
 * **Windows:** `py -m pip install -r requirements.txt`
-### Launching the Application
+## Launching the Application
 
 Run `GUI2.py` to launch the graphical user interface:
 ```bash
@@ -39,13 +41,15 @@ python GUI2.py
 ```
 ---
 
-# Initial Overview & Workflow Methods
+## Initial Overview & Workflow Methods
 This application processes Fluorescence Lifetime Imaging Microscopy (FLIM) data through a graphical user interface built with the `tkinter` and `sv_ttk` libraries. The workflow converts raw time-domain photon arrival histograms into frequency-domain phasor coordinates, pools datasets for global statistical modeling, and segments spatial structures.
+
 ## 1. Preprocessing and Calibration
-This stage converts raw time-domain photon counts into calibrated frequency-domain phasors $(G, S)$ while filtering out background noise.
+This stage converts raw time-domain photon arrival histograms into calibrated frequency-domain phasors $(G, S)$ while filtering out background noise.
 
 ### A. Spatial Binning, Normalization, and Thresholding
 Fluorescence decay is a Poissonian process in which the Signal-to-Noise Ratio (SNR) scales with the square root of the photon counts ($\sqrt{N_{ph}}$). By summing photon counts from adjacent pixels, spatial binning increases $N_{ph}$ and reduces the variance of the resulting phasor coordinates.
+
 1. **Spatial Integration:** The software applies $B \times B$ spatial binning to the raw intensity image (typically set to $3 \times 3$ in our workflow):
 
 $$
@@ -54,7 +58,7 @@ $$
 
 2. **Normalization:** The binned intensity data is max-normalized to standardize signal levels across different input files.
 ### B. Phasor Transformation
-For each pixel passing the intensity threshold, the normalized and binned time-domain fluorescence decay $I(t)$ is transformed into frequency-domain coordinates $(G, S)$ via a discrete Fourier transform evaluated at a specific harmonic frequency:
+For each pixel passing the intensity threshold, the normalized and binned time-domain fluorescence decay, $I(t)$, is transformed into frequency-domain (phasor) coordinates, $(G, S)$, via a discrete Fourier transform evaluated at a specific harmonic frequency:
 
 $$
 g(\omega) = \frac{\int_0^T I(t) \cos(\omega t) \, dt}{\int_0^T I(t) \, dt}, \quad s(\omega) = \frac{\int_0^T I(t) \sin(\omega t) \, dt}{\int_0^T I(t) \, dt}
