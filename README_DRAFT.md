@@ -15,6 +15,7 @@ bash setup.bash
 ```
 
 (Placeholder: `setup.bash` will initialize the Conda environment and install `requirements.txt` packages including `tkinter`, `sv_ttk`, `scikit-learn`, `scipy`, and `scikit-image`.)
+
 3. Activate the newly created Conda environment:
 ```bash
 conda activate R5_analysis_env
