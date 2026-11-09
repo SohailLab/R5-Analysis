@@ -1,7 +1,5 @@
 # Multi-Image Phasor Analysis for FLIM Data - A quick guide to setup and implementation
 
-> **[PLACEHOLDER — TODO: Once I get repository access]**
-> *`setup.bash` and `requirements.txt` will be added to the root directory to automate Conda environment creation and package installation.*
 
 ## Description
 
@@ -20,7 +18,7 @@ cd R5-Analysis
 bash setup.bash
 ```
 
-(Placeholder: `setup.bash` will initialize the Conda environment and install `requirements.txt` packages including `tkinter`, `sv_ttk`, `scikit-learn`, `scipy`, and `scikit-image`.)
+> `setup.bash` will initialize the Conda environment and install `requirements.txt` packages including `tkinter`, `sv_ttk`, `scikit-learn`, `scipy`, and `scikit-image`.
 
 3. Activate the newly created Conda environment:
 ```bash
