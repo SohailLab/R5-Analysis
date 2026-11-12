@@ -39,8 +39,33 @@ python GUI2.py
 ```
 ---
 
-## Initial Overview & Workflow Methods
+## Implementation
 This application processes Fluorescence Lifetime Imaging Microscopy (FLIM) data through a graphical user interface built with the `tkinter` and `sv_ttk` libraries. The workflow converts raw time-domain photon arrival histograms into frequency-domain phasor coordinates, pools datasets for global statistical modeling, and segments spatial structures.
+
+### 1. Select input tiff or tif files. 
+Use "Browse" button to navigate to FLIM data as tif/tiff files. Our data are provided in the TIF folder of this repository. 
+
+### 2. Select calibration tiff or tif file.
+A dye standard of known fluorescence lifetime is used to correct for the instrument's IRF in phasor space.
+
+### 3. Select output folder
+Specify a file location for the output of the clustering.
+
+### 4. Specify analysis parameters
+Our tif files (provided) were binned prior to use with this GUI. Thus, in our analysis, the bin size was set to 1. A bin size of $n$ where $n$ greater than 1 will implement $n$ by $n$ square binning.
+The min intensity threshold is used to remove background noise from the analysis. Max intensity threshold should be set to 1 as the analysis normalizing the photon arrival histograms in each image. 
+
+### 5. Specify calibration settings
+Select "Calibrate Manually" if you already have phi and M values that will compensate for the IRF in phasor space. We calibrated using the selected calibration tiff - coumarin 6 in EtOH. Our time bin width = 0.0122 ns (1024 time bins running at 80 MHz). Frequency refers to the laser repetition rate (80 MHz). Harmonic = 1 as the 2D Cartesian $(G,S)$ phasor plot results from a transform using the fundamental Fourier frequency. Reference lifetime refers to the known lifetime of the calibration standard (2.5 ns for coumarin 6 in EtOH).
+
+### 6. Step 1: Fit New GMM Model from Aggregated Data
+This step will combine all input tiffs into a single phasor plot in order to determine clusters that exist within the data. GMM fitting parameters allow you to pick a segmentation model, BIC+SD or AIC, and the number of max components. You can also select "Manual" under segmentation model and then specify the precise number of components that will be used in the fitting. Hitting 'Run Analysis' will initiate the cluster position determination. See below for more details on the theory behind this methodology. The cluster information is saved as a CSV file in he specified output location. 
+
+### 7. Step 2: Apply Existing GMM Model to Files
+This step will apply an existing cluster model to the input files. Cluster component details can be input manually or uploaded from the CSV output of the previous step. Hitting 'Run Analysis' will apply the cluster model to the images and generate phasor plots and color-by-cluster images based on cluster assignments. All image files will be saved to the output filepath as pdf, eps, or png files. Individual aggregate information is saved in CSV files corresponding to each input image. 
+
+## Theory of the Methodology 
+
 
 ## 1. Preprocessing and Calibration
 This stage converts raw time-domain photon arrival histograms into calibrated frequency-domain phasors $(G, S)$ while filtering out background noise.
